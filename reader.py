@@ -67,8 +67,8 @@ class ScanData:
                 track_data.append({
                     'frame_number': number,
                     'd': 100 * d * self.header['pixel_size'],
-                    'x': x_position + 0.5 * self.header['frame_width'] - x * self.header['pixel_size'],
-                    'y': y_position + 0.5 * self.header['frame_height'] - x * self.header['pixel_size'],
+                    'x': x_position - 0.5 * self.header['frame_width'] + x * self.header['pixel_size'],
+                    'y': y_position - 0.5 * self.header['frame_height'] + y * self.header['pixel_size'],
                     'e': e,
                     'c': c,
                     'a': a
