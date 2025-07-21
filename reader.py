@@ -2,7 +2,12 @@ import struct
 import traceback
 
 import pandas as pd
-from tqdm import tqdm
+
+try:
+    from tqdm import tqdm
+except ImportError:
+    def tqdm(x, *args, **kwargs):
+        return x
 
 
 def _read_next_value(f, code, prefix='<'):
