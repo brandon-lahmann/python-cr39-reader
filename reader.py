@@ -34,7 +34,9 @@ def _skip_forward(f, n):
 
 class ScanData:
     def __init__(self, path, frame_buffer_size=np.inf, track_buffer_size=np.inf, d_bounds=(0, np.inf), e_bounds=(0, np.inf), c_bounds=(0, np.inf), a_bounds=(0, np.inf), x_bounds=(-np.inf, np.inf), y_bounds=(-np.inf, np.inf)):
+        self.header = None
         self.trailer = None
+
         self.frames = pd.DataFrame({
             'number': pd.Series(dtype='int32'),
             'x_position': pd.Series(dtype='float32'),
