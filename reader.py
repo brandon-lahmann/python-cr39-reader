@@ -6,7 +6,7 @@ import pandas as pd
 from tqdm import tqdm
 
 class ScanData:
-    def __init__(self, path, frame_buffer_size=5, track_buffer_size=1000, d_bounds=(0, np.inf), e_bounds=(0, np.inf), c_bounds=(0, np.inf), a_bounds=(0, np.inf), x_bounds=(-np.inf, np.inf), y_bounds=(-np.inf, np.inf)):
+    def __init__(self, path, frame_buffer_size=np.inf, track_buffer_size=np.inf, d_bounds=(0, np.inf), e_bounds=(0, np.inf), c_bounds=(0, np.inf), a_bounds=(0, np.inf), x_bounds=(-np.inf, np.inf), y_bounds=(-np.inf, np.inf)):
         self.trailer = None
         self.frames = pd.DataFrame({
             'number': pd.Series(dtype='int32'),
