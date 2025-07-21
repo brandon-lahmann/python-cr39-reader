@@ -1,7 +1,6 @@
 import struct
 import traceback
 
-import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
@@ -33,7 +32,7 @@ def _skip_forward(f, n):
 
 
 class ScanData:
-    def __init__(self, path, frame_buffer_size=np.inf, track_buffer_size=np.inf, d_bounds=(0, np.inf), e_bounds=(0, np.inf), c_bounds=(0, np.inf), a_bounds=(0, np.inf), x_bounds=(-np.inf, np.inf), y_bounds=(-np.inf, np.inf)):
+    def __init__(self, path, frame_buffer_size=float('inf'), track_buffer_size=float('inf'), d_bounds=(0, float('inf')), e_bounds=(0, float('inf')), c_bounds=(0, float('inf')), a_bounds=(0, float('inf')), x_bounds=(float('-inf'), float('inf')), y_bounds=(float('-inf'), float('inf'))):
         self.header = None
         self.trailer = None
 
