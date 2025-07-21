@@ -12,3 +12,6 @@ plt.show()
 tracks = tracks[tracks['c'] < 20]
 plt.hist2d(tracks['x'], tracks['y'], bins=100)
 plt.show()
+
+print(data.header)
+print(data.trailer)

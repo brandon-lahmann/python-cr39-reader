@@ -4,10 +4,9 @@ from tqdm import tqdm
 
 class ScanData:
     def __init__(self, path):
-        self.index = 0
         with open(path, 'rb') as f:
-            self.data = f.read()
-        self._parse()
+            self._f = f
+            self._parse()
 
     def _parse(self):
         self._parse_header()
@@ -79,14 +78,12 @@ class ScanData:
 
     def _parse_trailer(self):
         self.skip(4)
-        self.trailer = self.data[self.index::].decode('latin-1')
+        self.trailer = self._f.read().decode('latin-1')
 
     def get_next_value(self, code, prefix='<'):
         size = struct.calcsize(code)
-        # print(size, self.index, self.data[self.index:(self.index+size)])
-        value = struct.unpack(f'{prefix}{code}', self.data[self.index:(self.index+size)])[0]
-        self.index += size
-        return value
+        data = self._f.read(size)
+        return struct.unpack(f'{prefix}{code}', data)[0]
 
     def get_next_int(self):
         return self.get_next_value('i')
@@ -101,4 +98,4 @@ class ScanData:
         return self.get_next_value('b')
 
     def skip(self, n):
-        self.index += n
+        self._f.read(n)
